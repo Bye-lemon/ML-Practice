@@ -9,6 +9,7 @@ class Preceptron(object):
     """
 
     def __init__(self):
+        super().__init__()
         self.w = None
         self.b = 0
 
@@ -31,9 +32,7 @@ class Preceptron(object):
         print(f"[Training] Finish w - {self.w} b - {self.b}")
 
     def predict(self, x: np.array) -> np.array:
-        _predict = lambda x: 1 if np.dot(self.w, x.T) + self.b > 0 else -1
-        res = map(_predict, x)
-        return np.array(list(res))
+        return np.array(list(map(lambda x: 1 if np.dot(self.w, x.T) + self.b > 0 else -1, x)))
 
 
 if __name__ == "__main__":
